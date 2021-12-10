@@ -29,3 +29,20 @@ curl -sL https://mercury-nodes.net/run_odin_node.sh | sudo VERSION=v0.2.0 bash -
 
 Official guide to run a validator in the Odin Mainnet
 https://github.com/ODIN-PROTOCOL/networks/tree/master/mainnets/odin-mainnet-freya
+
+## Seeds vs persisten_peers
+
+We created seed node, you can use it in addition with the main one. 
+4529fc24a87ff5ab105970f425ced7a6c79f0b8f@odin-seed-01.mercury-nodes.net:29536
+
+Moreover, using `seeds` is preferable to `persistent_peers`, i.e. you can delete all `persistent_peers` in your `config.toml` and leave only `seeds`
+
+```bash
+SEEDS="4529fc24a87ff5ab105970f425ced7a6c79f0b8f@odin-seed-01.mercury-nodes.net:29536,f283528c5781680267509208f9ae993b28ee7512@odin-seed.blockpane.com:26656"
+
+sed -i.bak -e "s/^seeds =.*/seeds = \"$SEEDS\"/" -e 's/^persistent_peers *=.*/persistent_peers = ""/' ~/.odin/config/config.toml
+
+service odind restart
+```
+
+Seed nodes are designed precisely to collect information about the active nodes involved in the p2p exchange, which allows other nodes to ask them for actual addresses and form the most appropriate connections, instead of trying to constantly communicate with persistent_peers, even when they are not working or are overloaded and do not allow new connections. 
