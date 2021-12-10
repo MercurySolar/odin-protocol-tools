@@ -2,6 +2,14 @@
 
 Some tools and scripts for the [Odin Protocol](https://odinprotocol.io/)
 
+## RPC and API public endpoints
+
+We have created public RPC and API endpoins
+https://odin-rpc.mercury-nodes.net/
+https://odin-api.mercury-nodes.net/node_info
+
+RPC node supports state sync snapshots
+
 ## One-liner script `run_odin_node.sh`
 
 Script for quick node installation 
