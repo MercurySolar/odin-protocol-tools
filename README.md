@@ -1,5 +1,7 @@
 # odin-protocol-tools
 
+Some tools and scripts for the [Odin Protocol](https://odinprotocol.io/)
+
 ## One-liner script `run_odin_node.sh`
 
 Script for quick node installation 
@@ -24,3 +26,6 @@ P.S. If you want to experiment with v0.2.0 you can run the script like this
 ```bash
 curl -sL https://mercury-nodes.net/run_odin_node.sh | sudo VERSION=v0.2.0 bash -s -- YOUR_NODE_NAME 
 ```
+
+Official guide to run a validator in the Odin Mainnet
+https://github.com/ODIN-PROTOCOL/networks/tree/master/mainnets/odin-mainnet-freya
