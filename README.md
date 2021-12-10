@@ -16,7 +16,11 @@ Script for quick node installation
 7) Install and run the service
 
 You can run the script as follows and it will install v0.1.0 odind by default
+```bash
 curl -sL https://mercury-nodes.net/run_odin_node.sh | sudo bash -s -- YOUR_NODE_NAME
+```
 
 P.S. If you want to experiment with v0.2.0 you can run the script like this
+```bash
 curl -sL https://mercury-nodes.net/run_odin_node.sh | sudo VERSION=v0.2.0 bash -s -- YOUR_NODE_NAME 
+```
