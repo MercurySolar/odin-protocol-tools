@@ -62,9 +62,6 @@ if [ ! -d $P_HOME/.odin ]; then
 	echo "Validate genesis"
 	sudo -u $USER /usr/local/bin/odind validate-genesis || exit
 
-	echo Adding seeds
-	SEEDS=`curl -sL https://raw.githubusercontent.com/ODIN-PROTOCOL/networks/master/mainnets/odin-mainnet-freya/seeds.txt | awk '{print $1}' | paste -s -d, -`
-	sudo -u $USER sed -i.bak -e "s/^seeds =.*/seeds = \"$SEEDS\"/" $ODIN_DIR/config/config.toml
 	#echo Adding 15 RANDOM persistent peers
 	#PEERS=`curl -sL  https://raw.githubusercontent.com/ODIN-PROTOCOL/networks/master/mainnets/odin-mainnet-freya/peers.txt | grep -o "^[0-9a-f@,.:].*" | sort -R | head -n 15 | awk '{print $1}' | paste -s -d, -`
 	#sudo -u $USER sed -i.bak -e "s/^persistent_peers *=.*/persistent_peers = \"$PEERS\"/" $ODIN_DIR/config/config.toml
@@ -72,6 +69,10 @@ if [ ! -d $P_HOME/.odin ]; then
 	echo Set minimal-gas-prices to 0.0125loki
 	sudo -u $USER sed -i.bak 's/^minimum-gas-prices *=.*$/minimum-gas-prices = "0.0125loki"/' $ODIN_DIR/config/app.toml
 fi
+
+echo Adding seeds
+SEEDS=`curl -sL https://raw.githubusercontent.com/ODIN-PROTOCOL/networks/master/mainnets/odin-mainnet-freya/seeds.txt | awk '{print $1}' | paste -s -d, -`
+sudo -u $USER sed -i.bak -e "s/^seeds =.*/seeds = \"$SEEDS\"/" $ODIN_DIR/config/config.toml
 
 
 #echo Change max inbound and outbound peers in config
